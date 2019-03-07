@@ -92,15 +92,15 @@ WHERE employees.hire_date < "2011-01-01"
 --------10.REPORT Exercise 3-----------
 SELECT DISTINCT employees.first_name, employees.last_name, employees.birth_date, employees.gender, employees.hire_date, salaries.salary, titles.title, departments.dept_name
 FROM employees
-INNER JOIN salaries on employees.emp_no = salaries.emp_no
-INNER JOIN titles on employees.emp_no = titles.emp_no
-INNER JOIN dept_manager ON employees.emp_no = dept_manager.emp_no
-INNER JOIN departments ON dept_manager.dept_no = departments.dept_no 
+LEFT JOIN salaries on employees.emp_no = salaries.emp_no
+LEFT JOIN titles on employees.emp_no = titles.emp_no
+LEFT JOIN dept_manager ON employees.emp_no = dept_manager.emp_no
+LEFT JOIN departments ON dept_manager.dept_no = departments.dept_no 
 UNION
 SELECT DISTINCT employees.first_name, employees.last_name, employees.birth_date, employees.gender, employees.hire_date, salaries.salary, titles.title, departments.dept_name
 FROM employees
-INNER JOIN salaries on employees.emp_no = salaries.emp_no
-INNER JOIN titles on employees.emp_no = titles.emp_no
-INNER JOIN dept_manager ON employees.emp_no = dept_manager.emp_no
-INNER JOIN departments ON dept_manager.dept_no = departments.dept_no 
+RIGHT JOIN salaries on employees.emp_no = salaries.emp_no
+RIGHT JOIN titles on employees.emp_no = titles.emp_no
+RIGHT JOIN dept_manager ON employees.emp_no = dept_manager.emp_no
+RIGHT JOIN departments ON dept_manager.dept_no = departments.dept_no 
 WHERE dept_manager.to_date < '2011-11-11' AND titles.title = 'Manager'
